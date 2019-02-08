@@ -18,9 +18,9 @@ pipeline {
     label 'maven'
   }
   environment {
-    SERVICE_NAME = "queue-master"
-    ARTEFACT_ID = "sockshop/" + "${env.SERVICE_NAME}"
-    VERSION = readFile 'version'
+    APP_NAME = "queue-master"
+    ARTEFACT_ID = "sockshop/" + "${env.APP_NAME}"
+    VERSION = readFile('version').trim()
     TAG = "${env.DOCKER_REGISTRY_URL}:5000/library/${env.ARTEFACT_ID}"
     TAG_DEV = "${env.TAG}-${env.VERSION}-${env.BUILD_NUMBER}"
     TAG_STAGING = "${env.TAG}-${env.VERSION}"
